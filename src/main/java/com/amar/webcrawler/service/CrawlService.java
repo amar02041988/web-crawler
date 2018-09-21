@@ -3,7 +3,7 @@ package com.amar.webcrawler.service;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface CrawlerService {
+public interface CrawlService<T> {
 
-    public void crawl();
+    public void crawl(T t);
 }
