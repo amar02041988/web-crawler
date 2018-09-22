@@ -1,5 +1,6 @@
 package com.amar.webcrawler;
 
+import com.amar.webcrawler.model.bo.impl.SiteMapEntryImpl;
 import com.amar.webcrawler.service.CrawlService;
 import org.jsoup.helper.Validate;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BootWebCrawlerApplication implements CommandLineRunner {
 
     @Autowired
-    private CrawlService<String> crawlService;
+    private CrawlService<SiteMapEntryImpl> crawlService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BootWebCrawlerApplication.class);
 
@@ -25,14 +26,14 @@ public class BootWebCrawlerApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Validate.isTrue(args.length == 1,
                         "Usage: supply URL as command line parameter to start crawling");
-        crawlService.crawl(args[0]);
+        crawlService.crawl(new SiteMapEntryImpl(args[0]));
     }
 
-    public CrawlService<String> getCrawlService() {
+    public CrawlService<SiteMapEntryImpl> getCrawlService() {
         return crawlService;
     }
 
-    public void setCrawlService(CrawlService<String> crawlService) {
+    public void setCrawlService(CrawlService<SiteMapEntryImpl> crawlService) {
         this.crawlService = crawlService;
     }
 

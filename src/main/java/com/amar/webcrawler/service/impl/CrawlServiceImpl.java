@@ -1,6 +1,7 @@
 package com.amar.webcrawler.service.impl;
 
 import com.amar.webcrawler.BootWebCrawlerApplication;
+import com.amar.webcrawler.model.bo.impl.SiteMapEntryImpl;
 import com.amar.webcrawler.service.CrawlService;
 import com.amar.webcrawler.service.CrawlTracker;
 import org.jsoup.Jsoup;
@@ -16,52 +17,48 @@ import org.springframework.util.StringUtils;
 import java.io.IOException;
 
 @Component
-public class CrawlServiceImpl implements CrawlService<String> {
+public class CrawlServiceImpl implements CrawlService<SiteMapEntryImpl> {
 
-    private CrawlTracker<String> crawlTracker;
+    private final CrawlTracker<SiteMapEntryImpl> crawlTracker;
     private static final Logger LOGGER = LoggerFactory.getLogger(BootWebCrawlerApplication.class);
 
 
-    public CrawlServiceImpl() {
-        super();
-    }
-
     @Autowired
-    public CrawlServiceImpl(CrawlTracker<String> crawlTracker) {
+    public CrawlServiceImpl(CrawlTracker<SiteMapEntryImpl> crawlTracker) {
         super();
         this.crawlTracker = crawlTracker;
     }
 
 
     @Override
-    public void crawl(String url) {
+    public void crawl(SiteMapEntryImpl siteMapUrl) {
 
         Document document = null;
 
-        if (!crawlTracker.isCrawled(url)) {
+        if (!crawlTracker.isCrawled(siteMapUrl)) {
 
-            if (crawlTracker.addCrawled(url)) {
-                LOGGER.info(url);
+            if (crawlTracker.addCrawled(siteMapUrl)) {
+                LOGGER.info(siteMapUrl.toString());
             }
 
             try {
-                document = Jsoup.connect(url).get();
+                document = Jsoup.connect(siteMapUrl.getLocation()).get();
             } catch (IOException e) {
                 LOGGER.error("Error occured: {}", e.getMessage());
                 e.printStackTrace();
                 return;
             }
 
-            Elements hrefsInPage = document.select(Constants.HREF_TAGS);
+            Elements hrefsInPage = document.select(Constants.PAGE_URL_IN_HREF);
 
             for (Element href : hrefsInPage) {
-                String absUrl = href.attr(Constants.ABSOLUTE_URL_IN_HREF);
+                String absUrl = href.attr(Constants.ABSOLUTE_PAGE_URL_IN_HREF);
 
                 if (StringUtils.isEmpty(absUrl)) {
                     continue;
                 }
 
-                crawl(absUrl);
+                crawl(new SiteMapEntryImpl(absUrl));
             }
         }
     }
