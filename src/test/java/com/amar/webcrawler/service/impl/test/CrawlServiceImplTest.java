@@ -26,7 +26,7 @@ public class CrawlServiceImplTest {
         Elements hrefs = document.select(Constants.PAGE_URL_IN_HREF);
         System.out.println("hrefs:" + hrefs.size());
         for (Element href : hrefs) {
-            System.out.println(href.attr(Constants.ABSOLUTE_PAGE_URL_IN_HREF));
+            System.out.println(href.attr(Constants.PAGE_URL_IN_ABSOLUTE_HREF));
         }
 
         System.out.println();

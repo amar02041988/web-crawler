@@ -1,11 +1,11 @@
 package com.amar.webcrawler.model.bo;
 
 import com.amar.webcrawler.model.ChangeFrequencyType;
-import com.amar.webcrawler.model.SiteMapEntryType;
+import com.amar.webcrawler.model.UrlType;
 
 import java.util.Date;
 
-public interface SiteMapEntry {
+public interface SiteMapUrlEntry {
 
     public String getLocation();
 
@@ -15,5 +15,5 @@ public interface SiteMapEntry {
 
     public Double getPriority();
 
-    public SiteMapEntryType getType();
+    public UrlType getType();
 }
