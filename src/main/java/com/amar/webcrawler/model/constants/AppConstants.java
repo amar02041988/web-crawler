@@ -1,4 +1,4 @@
-package com.amar.webcrawler.service.impl;
+package com.amar.webcrawler.model.constants;
 
 
 public interface AppConstants {

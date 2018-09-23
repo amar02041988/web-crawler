@@ -1,8 +1,8 @@
 package com.amar.webcrawler;
 
-import com.amar.webcrawler.model.bo.SiteMapUrlEntry;
-import com.amar.webcrawler.model.bo.impl.SiteMapUrlEntryImpl;
-import com.amar.webcrawler.model.constants.UrlType;
+import com.amar.webcrawler.model.bo.SiteMapUrl;
+import com.amar.webcrawler.model.bo.impl.SiteMapUrlImpl;
+import com.amar.webcrawler.model.constants.HtmlTagType;
 import com.amar.webcrawler.model.properties.AppProperties;
 import com.amar.webcrawler.service.CrawlService;
 import com.amar.webcrawler.util.UrlUtils;
@@ -18,7 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BootWebCrawlerApplication implements CommandLineRunner {
 
     @Autowired
-    private CrawlService<SiteMapUrlEntry> crawlService;
+    private CrawlService<SiteMapUrl> crawlService;
 
     @Autowired
     private AppProperties appProperties;
@@ -35,14 +35,14 @@ public class BootWebCrawlerApplication implements CommandLineRunner {
                         "Usage: supply URL as command line parameter to start crawling");
         String url = args[0];
         appProperties.setDomain(UrlUtils.getDomain(url));
-        crawlService.crawl(new SiteMapUrlEntryImpl(UrlType.HREF, url));
+        crawlService.crawl(new SiteMapUrlImpl(HtmlTagType.ANCHOR, url));
     }
 
-    public CrawlService<SiteMapUrlEntry> getCrawlService() {
+    public CrawlService<SiteMapUrl> getCrawlService() {
         return crawlService;
     }
 
-    public void setCrawlService(CrawlService<SiteMapUrlEntry> crawlService) {
+    public void setCrawlService(CrawlService<SiteMapUrl> crawlService) {
         this.crawlService = crawlService;
     }
 

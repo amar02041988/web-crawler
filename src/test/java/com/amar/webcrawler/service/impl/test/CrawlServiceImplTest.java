@@ -1,6 +1,6 @@
 package com.amar.webcrawler.service.impl.test;
 
-import com.amar.webcrawler.service.impl.AppConstants;
+import com.amar.webcrawler.model.constants.AppConstants;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

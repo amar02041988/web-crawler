@@ -1,7 +1,7 @@
 package com.amar.webcrawler.config;
 
-import com.amar.webcrawler.model.bo.SiteMapUrlEntry;
-import com.amar.webcrawler.model.constants.UrlType;
+import com.amar.webcrawler.model.bo.SiteMapUrl;
+import com.amar.webcrawler.model.constants.HtmlTagType;
 import com.amar.webcrawler.model.properties.AppProperties;
 import com.amar.webcrawler.model.properties.CssQueryProperties;
 import com.amar.webcrawler.service.CrawlService;
@@ -15,12 +15,25 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Configuration
 public class AppConfig {
+
+    @Bean
+    public ForkJoinPool forkJoinPool() {
+        return new ForkJoinPool();
+    }
+
+    @Bean
+    public ReentrantLock crawlTrackLock() {
+        return new ReentrantLock();
+    }
 
     @Bean
     @ConfigurationProperties(prefix = "app.jsoup.cssquery")
@@ -36,30 +49,31 @@ public class AppConfig {
 
     @Bean
     @Autowired
-    public CrawlTracker<SiteMapUrlEntry> crawlTracker(AppProperties appProperties) {
-        Set<SiteMapUrlEntry> allTrackedUrlEntries = new LinkedHashSet<>();
+    public CrawlTracker<SiteMapUrl> crawlTracker(AppProperties appProperties,
+                    ReentrantLock reentrantLock) {
+        Set<SiteMapUrl> allSiteMapUrlSet = new LinkedHashSet<>();
+        Set<SiteMapUrl> anchorSiteMapUrlSet = new HashSet<>();
+        Set<SiteMapUrl> srcSiteMapUrlSet = new HashSet<>();
+        Set<SiteMapUrl> linkSiteMapUrlSet = new HashSet<>();
 
-        Set<SiteMapUrlEntry> trackedHrefUrlEntries = new HashSet<>();
-        Set<SiteMapUrlEntry> trackedSrcUrlEntries = new HashSet<>();
-        Set<SiteMapUrlEntry> trackedImportLinkUrlEntries = new HashSet<>();
-
-        Map<UrlType, Set<SiteMapUrlEntry>> trackedUrlEntriesSetLookup = new HashMap<>();
-        trackedUrlEntriesSetLookup.put(UrlType.HREF, trackedHrefUrlEntries);
-        trackedUrlEntriesSetLookup.put(UrlType.SRC, trackedSrcUrlEntries);
-        trackedUrlEntriesSetLookup.put(UrlType.IMPORT_LINK, trackedImportLinkUrlEntries);
-        trackedUrlEntriesSetLookup.put(UrlType.ALL, allTrackedUrlEntries);
-        return new CrawlTrackerImpl(trackedUrlEntriesSetLookup, appProperties);
+        Map<HtmlTagType, Set<SiteMapUrl>> siteMapUrlSetLookup = new HashMap<>();
+        siteMapUrlSetLookup.put(HtmlTagType.ANCHOR, anchorSiteMapUrlSet);
+        siteMapUrlSetLookup.put(HtmlTagType.SRC, srcSiteMapUrlSet);
+        siteMapUrlSetLookup.put(HtmlTagType.LINK, linkSiteMapUrlSet);
+        siteMapUrlSetLookup.put(HtmlTagType.ALL, allSiteMapUrlSet);
+        return new CrawlTrackerImpl(siteMapUrlSetLookup, appProperties, reentrantLock);
     }
 
     @Bean
     @Autowired
-    public CrawlService<SiteMapUrlEntry> crawlService(CrawlTracker<SiteMapUrlEntry> crawlTracker,
-                    CssQueryProperties cssQueryProperties, AppProperties appProperties) {
-        Map<UrlType, Map<String, String>> cssQueryLookup = new HashMap<>();
-        cssQueryLookup.put(UrlType.HREF, cssQueryProperties.getHrefQueries());
-        cssQueryLookup.put(UrlType.SRC, cssQueryProperties.getSrcQueries());
-        cssQueryLookup.put(UrlType.IMPORT_LINK, cssQueryProperties.getImportLinkQueries());
-        return new CrawlServiceImpl(crawlTracker, cssQueryLookup, appProperties);
+    public CrawlService<SiteMapUrl> crawlService(CrawlTracker<SiteMapUrl> crawlTracker,
+                    CssQueryProperties cssQueryProperties, AppProperties appProperties,
+                    ForkJoinPool pool) {
+        Map<HtmlTagType, Map<String, String>> cssQueryLookup = new LinkedHashMap<>();
+        cssQueryLookup.put(HtmlTagType.LINK, cssQueryProperties.getLinkQueries());
+        cssQueryLookup.put(HtmlTagType.SRC, cssQueryProperties.getSrcQueries());
+        cssQueryLookup.put(HtmlTagType.ANCHOR, cssQueryProperties.getAnchorQueries());
+        return new CrawlServiceImpl(crawlTracker, cssQueryLookup, appProperties, pool);
     }
 
 }

@@ -1,30 +1,30 @@
 package com.amar.webcrawler.model.bo.impl;
 
-import com.amar.webcrawler.model.bo.SiteMapUrlEntry;
+import com.amar.webcrawler.model.bo.SiteMapUrl;
 import com.amar.webcrawler.model.constants.ChangeFrequencyType;
-import com.amar.webcrawler.model.constants.UrlType;
+import com.amar.webcrawler.model.constants.HtmlTagType;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.Date;
 import java.util.Objects;
 
-public final class SiteMapUrlEntryImpl implements SiteMapUrlEntry {
+public final class SiteMapUrlImpl implements SiteMapUrl {
 
-    private UrlType type;
+    private HtmlTagType type;
     private String location;
     private Date lastModified;
     private ChangeFrequencyType changeFrequency;
     private Double priority;
 
-    public SiteMapUrlEntryImpl(UrlType type, String loc) {
+    public SiteMapUrlImpl(HtmlTagType type, String loc) {
         super();
         this.location = loc;
         this.type = type;
         this.changeFrequency = ChangeFrequencyType.NEVER;
     }
 
-    public SiteMapUrlEntryImpl(UrlType type, String location, Date lastModified,
+    public SiteMapUrlImpl(HtmlTagType type, String location, Date lastModified,
                     ChangeFrequencyType changeFrequency, Double priority) {
         super();
         this.type = type;
@@ -35,7 +35,7 @@ public final class SiteMapUrlEntryImpl implements SiteMapUrlEntry {
     }
 
     @Override
-    public UrlType getType() {
+    public HtmlTagType getType() {
         return type;
     }
 
@@ -64,10 +64,10 @@ public final class SiteMapUrlEntryImpl implements SiteMapUrlEntry {
         if (this == other) {
             return true;
         }
-        if (!(other instanceof SiteMapUrlEntryImpl)) {
+        if (!(other instanceof SiteMapUrlImpl)) {
             return false;
         }
-        SiteMapUrlEntryImpl castOther = (SiteMapUrlEntryImpl) other;
+        SiteMapUrlImpl castOther = (SiteMapUrlImpl) other;
         return Objects.equals(location, castOther.location);
     }
 
