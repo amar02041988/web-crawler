@@ -4,9 +4,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 
-public class AppProperties {
+public final class AppProperties {
 
     private int connectAndReadTimeoutInMillis;
+    private String domain;
 
     public AppProperties() {
         super();
@@ -27,11 +28,20 @@ public class AppProperties {
         this.connectAndReadTimeoutInMillis = connectAndReadTimeoutInMillis;
     }
 
+    public String getDomain() {
+        return domain;
+    }
+
+
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
+
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SIMPLE_STYLE)
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                         .append("connectAndReadTimeoutInMillis", connectAndReadTimeoutInMillis)
-                        .toString();
+                        .append("domain", domain).toString();
     }
 
 

@@ -5,7 +5,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CrawlTracker<T> {
 
-    public boolean isCrawled(T t);
-
-    public boolean addCrawled(T t);
+    public boolean add(T t);
 }

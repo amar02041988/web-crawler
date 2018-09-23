@@ -3,7 +3,9 @@ package com.amar.webcrawler;
 import com.amar.webcrawler.model.bo.SiteMapUrlEntry;
 import com.amar.webcrawler.model.bo.impl.SiteMapUrlEntryImpl;
 import com.amar.webcrawler.model.constants.UrlType;
+import com.amar.webcrawler.model.properties.AppProperties;
 import com.amar.webcrawler.service.CrawlService;
+import com.amar.webcrawler.util.UrlUtils;
 import org.jsoup.helper.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,9 @@ public class BootWebCrawlerApplication implements CommandLineRunner {
     @Autowired
     private CrawlService<SiteMapUrlEntry> crawlService;
 
+    @Autowired
+    private AppProperties appProperties;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(BootWebCrawlerApplication.class);
 
     public static void main(String[] args) {
@@ -28,7 +33,9 @@ public class BootWebCrawlerApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Validate.isTrue(args.length == 1,
                         "Usage: supply URL as command line parameter to start crawling");
-        crawlService.crawl(new SiteMapUrlEntryImpl(UrlType.PAGE, args[0]));
+        String url = args[0];
+        appProperties.setDomain(UrlUtils.getDomain(url));
+        crawlService.crawl(new SiteMapUrlEntryImpl(UrlType.HREF, url));
     }
 
     public CrawlService<SiteMapUrlEntry> getCrawlService() {
@@ -37,6 +44,16 @@ public class BootWebCrawlerApplication implements CommandLineRunner {
 
     public void setCrawlService(CrawlService<SiteMapUrlEntry> crawlService) {
         this.crawlService = crawlService;
+    }
+
+
+    public AppProperties getAppProperties() {
+        return appProperties;
+    }
+
+
+    public void setAppProperties(AppProperties appProperties) {
+        this.appProperties = appProperties;
     }
 
 }

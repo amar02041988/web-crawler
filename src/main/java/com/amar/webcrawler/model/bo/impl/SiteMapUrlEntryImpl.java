@@ -78,10 +78,9 @@ public final class SiteMapUrlEntryImpl implements SiteMapUrlEntry {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("location", location)
-                        .append("lastModified", lastModified)
-                        .append("changeFrequency", changeFrequency).append("priority", priority)
-                        .append("type", type).toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("type", type)
+                        .append("location", location).append("lastModified", lastModified)
+                        .append("changeFrequency", changeFrequency).append("priority", priority).toString();
     }
 
 }

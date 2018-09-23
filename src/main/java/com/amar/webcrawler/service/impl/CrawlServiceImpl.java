@@ -7,6 +7,7 @@ import com.amar.webcrawler.model.constants.UrlType;
 import com.amar.webcrawler.model.properties.AppProperties;
 import com.amar.webcrawler.service.CrawlService;
 import com.amar.webcrawler.service.CrawlTracker;
+import com.amar.webcrawler.util.UrlUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -32,50 +33,42 @@ public class CrawlServiceImpl implements CrawlService<SiteMapUrlEntry> {
         this.crawlTracker = crawlTracker;
         this.cssQueryLookup = cssQueryLookup;
         this.appProperties = appProperties;
-
-        System.out.println(appProperties);
-        System.out.println(cssQueryLookup.get(UrlType.PAGE));
-        System.out.println(cssQueryLookup.get(UrlType.MEDIA));
-        System.out.println(cssQueryLookup.get(UrlType.IMPORT_LINK));
     }
 
     @Override
     public void crawl(SiteMapUrlEntry siteMapUrl) {
 
-        Document document = null;
-
-        if (!crawlTracker.isCrawled(siteMapUrl)) {
-
-            if (crawlTracker.addCrawled(siteMapUrl)) {
-                LOGGER.info(siteMapUrl.toString());
-            }
-
-            if (!siteMapUrl.getType().equals(UrlType.PAGE)) {
-                return;
-            }
-
-            try {
-                document = Jsoup.connect(siteMapUrl.getLocation())
-                                .timeout(appProperties.getConnectAndReadTimeoutInMillis()).get();
-            } catch (IOException e) {
-                LOGGER.error("Error occured: {}", e.getMessage());
-                e.printStackTrace();
-                return;
-            }
-
-            extractUrls(document, cssQueryLookup);
-
+        if (!(isInternalDomain(siteMapUrl) && crawlTracker.add(siteMapUrl))) {
+            return;
         }
+
+        LOGGER.info("Type: {}, URL: {}", siteMapUrl.getType(), siteMapUrl.getLocation());
+
+        Document document = null;
+        try {
+            document = Jsoup.connect(siteMapUrl.getLocation())
+                            .timeout(appProperties.getConnectAndReadTimeoutInMillis())
+                            .ignoreHttpErrors(true).ignoreContentType(true).get();
+        } catch (IOException e) {
+            LOGGER.error("Error occured: {}", e.getMessage());
+            e.printStackTrace();
+            return;
+        }
+
+        extractUrls(document, cssQueryLookup);
+
     }
 
     protected void extractUrls(Document document,
                     Map<UrlType, Map<String, String>> cssQueryLookup) {
         cssQueryLookup.forEach((urlType, cssQueries) -> {
-            System.out.println("Crawling URL of type: " + urlType);
             Elements elementsWithUrl = document.select(cssQueries.get(AppConstants.SELECT_URL_KEY));
             for (Element elementWithUrl : elementsWithUrl) {
                 String elementWithAbsoluteUrl =
                                 elementWithUrl.attr(cssQueries.get(AppConstants.ABSOLUTE_URL_KEY));
+
+                elementWithAbsoluteUrl = removeFragmentIdentifierIfExist(elementWithAbsoluteUrl);
+
                 if (StringUtils.isEmpty(elementWithAbsoluteUrl)) {
                     continue;
                 }
@@ -103,6 +96,29 @@ public class CrawlServiceImpl implements CrawlService<SiteMapUrlEntry> {
 
     public void setAppProperties(AppProperties appProperties) {
         this.appProperties = appProperties;
+    }
+
+    protected boolean isInternalDomain(SiteMapUrlEntry siteMapUrl) {
+        try {
+            if (siteMapUrl.getType().equals(UrlType.HREF)) {
+                String domain = UrlUtils.getDomain(siteMapUrl.getLocation());
+                if (!StringUtils.isEmpty(domain) && domain.equals(appProperties.getDomain())) {
+                    return true;
+                }
+            }
+        } catch (Exception ex) {
+            LOGGER.error("Skipping URL: {} due to error while getting domain: {}: ",
+                            siteMapUrl.getLocation(), ex.getMessage());
+        }
+        return false;
+    }
+
+    protected String removeFragmentIdentifierIfExist(String url) {
+        int fragmentIdentifierIndex = url.indexOf(AppConstants.FRAGMENT_IDENTIFIER);
+        if (fragmentIdentifierIndex > 0) {
+            url = url.substring(0, fragmentIdentifierIndex);
+        }
+        return url;
     }
 
 }

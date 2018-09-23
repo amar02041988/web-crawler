@@ -6,8 +6,8 @@ import java.net.URL;
 
 public final class UrlUtils {
 
-    public static void getDomain(String urlString) throws Exception {
-        System.out.println(InternetDomainName.from(new URL(urlString).getHost()).topPrivateDomain()
-                        .toString());
+    public static String getDomain(String urlString) throws Exception {
+        return InternetDomainName.from(new URL(urlString).getHost()).topPrivateDomain().toString()
+                        .toLowerCase();
     }
 }

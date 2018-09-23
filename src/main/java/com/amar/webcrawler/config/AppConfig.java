@@ -30,25 +30,25 @@ public class AppConfig {
 
     @Bean
     @ConfigurationProperties(prefix = "app.settings")
-    public AppProperties impo() {
+    public AppProperties appProperties() {
         return new AppProperties();
     }
 
     @Bean
     @Autowired
-    public CrawlTracker<SiteMapUrlEntry> crawlTracker() {
-        Set<SiteMapUrlEntry> allCrawledUrlEntries = new LinkedHashSet<>();
+    public CrawlTracker<SiteMapUrlEntry> crawlTracker(AppProperties appProperties) {
+        Set<SiteMapUrlEntry> allTrackedUrlEntries = new LinkedHashSet<>();
 
-        Set<SiteMapUrlEntry> crawledPageUrlEntries = new HashSet<>();
-        Set<SiteMapUrlEntry> crawledMediaUrlEntries = new HashSet<>();
-        Set<SiteMapUrlEntry> crawledImportLinkUrlEntries = new HashSet<>();
+        Set<SiteMapUrlEntry> trackedHrefUrlEntries = new HashSet<>();
+        Set<SiteMapUrlEntry> trackedSrcUrlEntries = new HashSet<>();
+        Set<SiteMapUrlEntry> trackedImportLinkUrlEntries = new HashSet<>();
 
-        Map<UrlType, Set<SiteMapUrlEntry>> crawledUrlEntriesSetLookup = new HashMap<>();
-        crawledUrlEntriesSetLookup.put(UrlType.PAGE, crawledPageUrlEntries);
-        crawledUrlEntriesSetLookup.put(UrlType.MEDIA, crawledMediaUrlEntries);
-        crawledUrlEntriesSetLookup.put(UrlType.IMPORT_LINK, crawledImportLinkUrlEntries);
-        crawledUrlEntriesSetLookup.put(UrlType.ALL, allCrawledUrlEntries);
-        return new CrawlTrackerImpl(crawledUrlEntriesSetLookup);
+        Map<UrlType, Set<SiteMapUrlEntry>> trackedUrlEntriesSetLookup = new HashMap<>();
+        trackedUrlEntriesSetLookup.put(UrlType.HREF, trackedHrefUrlEntries);
+        trackedUrlEntriesSetLookup.put(UrlType.SRC, trackedSrcUrlEntries);
+        trackedUrlEntriesSetLookup.put(UrlType.IMPORT_LINK, trackedImportLinkUrlEntries);
+        trackedUrlEntriesSetLookup.put(UrlType.ALL, allTrackedUrlEntries);
+        return new CrawlTrackerImpl(trackedUrlEntriesSetLookup, appProperties);
     }
 
     @Bean
@@ -56,8 +56,8 @@ public class AppConfig {
     public CrawlService<SiteMapUrlEntry> crawlService(CrawlTracker<SiteMapUrlEntry> crawlTracker,
                     CssQueryProperties cssQueryProperties, AppProperties appProperties) {
         Map<UrlType, Map<String, String>> cssQueryLookup = new HashMap<>();
-        cssQueryLookup.put(UrlType.PAGE, cssQueryProperties.getPageQueries());
-        cssQueryLookup.put(UrlType.MEDIA, cssQueryProperties.getMediaQueries());
+        cssQueryLookup.put(UrlType.HREF, cssQueryProperties.getHrefQueries());
+        cssQueryLookup.put(UrlType.SRC, cssQueryProperties.getSrcQueries());
         cssQueryLookup.put(UrlType.IMPORT_LINK, cssQueryProperties.getImportLinkQueries());
         return new CrawlServiceImpl(crawlTracker, cssQueryLookup, appProperties);
     }

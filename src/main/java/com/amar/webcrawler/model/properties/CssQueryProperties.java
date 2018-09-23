@@ -8,40 +8,40 @@ import java.util.Map;
 
 public final class CssQueryProperties {
 
-    private Map<String, String> pageQueries = new HashMap<>();
-    private Map<String, String> mediaQueries = new HashMap<>();
+    private Map<String, String> hrefQueries = new HashMap<>();
+    private Map<String, String> srcQueries = new HashMap<>();
     private Map<String, String> importLinkQueries = new HashMap<>();
 
     public CssQueryProperties() {
         super();
     }
 
-    public CssQueryProperties(Map<String, String> pageQueries, Map<String, String> mediaQueries,
+    public CssQueryProperties(Map<String, String> hrefQueries, Map<String, String> srcQueries,
                     Map<String, String> importLinkQueries) {
         super();
-        this.pageQueries = pageQueries;
-        this.mediaQueries = mediaQueries;
+        this.hrefQueries = hrefQueries;
+        this.srcQueries = srcQueries;
         this.importLinkQueries = importLinkQueries;
     }
 
 
-    public Map<String, String> getPageQueries() {
-        return pageQueries;
+    public Map<String, String> getHrefQueries() {
+        return hrefQueries;
     }
 
 
-    public void setPageQueries(Map<String, String> pageQueries) {
-        this.pageQueries = pageQueries;
+    public void sethrefQueries(Map<String, String> hrefQueries) {
+        this.hrefQueries = hrefQueries;
     }
 
 
-    public Map<String, String> getMediaQueries() {
-        return mediaQueries;
+    public Map<String, String> getSrcQueries() {
+        return srcQueries;
     }
 
 
-    public void setMediaQueries(Map<String, String> mediaQueries) {
-        this.mediaQueries = mediaQueries;
+    public void setsrcQueries(Map<String, String> srcQueries) {
+        this.srcQueries = srcQueries;
     }
 
 
@@ -56,9 +56,10 @@ public final class CssQueryProperties {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SIMPLE_STYLE)
-                        .append("pageQueries", pageQueries).append("mediaQueries", mediaQueries)
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                        .append("hrefQueries", hrefQueries).append("srcQueries", srcQueries)
                         .append("importLinkQueries", importLinkQueries).toString();
     }
+
 
 }
