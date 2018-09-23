@@ -1,8 +1,8 @@
 package com.amar.webcrawler.model.bo.impl;
 
-import com.amar.webcrawler.model.ChangeFrequencyType;
-import com.amar.webcrawler.model.UrlType;
 import com.amar.webcrawler.model.bo.SiteMapUrlEntry;
+import com.amar.webcrawler.model.constants.ChangeFrequencyType;
+import com.amar.webcrawler.model.constants.UrlType;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 

@@ -1,8 +1,8 @@
 package com.amar.webcrawler;
 
-import com.amar.webcrawler.model.UrlType;
 import com.amar.webcrawler.model.bo.SiteMapUrlEntry;
 import com.amar.webcrawler.model.bo.impl.SiteMapUrlEntryImpl;
+import com.amar.webcrawler.model.constants.UrlType;
 import com.amar.webcrawler.service.CrawlService;
 import org.jsoup.helper.Validate;
 import org.slf4j.Logger;

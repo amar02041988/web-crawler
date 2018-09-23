@@ -1,4 +1,4 @@
-package com.amar.webcrawler.model;
+package com.amar.webcrawler.model.constants;
 
 import java.util.HashMap;
 import java.util.Map;

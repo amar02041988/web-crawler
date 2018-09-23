@@ -1,7 +1,7 @@
 package com.amar.webcrawler.service.impl;
 
-import com.amar.webcrawler.model.UrlType;
 import com.amar.webcrawler.model.bo.SiteMapUrlEntry;
+import com.amar.webcrawler.model.constants.UrlType;
 import com.amar.webcrawler.service.CrawlTracker;
 
 import java.util.Map;

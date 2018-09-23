@@ -1,6 +1,6 @@
 package com.amar.webcrawler.service.impl.test;
 
-import com.amar.webcrawler.service.impl.Constants;
+import com.amar.webcrawler.service.impl.AppConstants;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -23,10 +23,10 @@ public class CrawlServiceImplTest {
         Document document = Jsoup.parse(html);
         document.setBaseUri("http://www.amar.com");
 
-        Elements hrefs = document.select(Constants.PAGE_URL_IN_HREF);
+        Elements hrefs = document.select(AppConstants.SELECT_URL_KEY);
         System.out.println("hrefs:" + hrefs.size());
         for (Element href : hrefs) {
-            System.out.println(href.attr(Constants.PAGE_URL_IN_ABSOLUTE_HREF));
+            System.out.println(href.attr(AppConstants.ABSOLUTE_URL_KEY));
         }
 
         System.out.println();

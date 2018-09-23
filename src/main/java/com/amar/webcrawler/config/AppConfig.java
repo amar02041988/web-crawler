@@ -1,11 +1,9 @@
 package com.amar.webcrawler.config;
 
-import com.amar.webcrawler.model.CssQueries;
-import com.amar.webcrawler.model.UrlType;
-import com.amar.webcrawler.model.bo.ImportLinkCssQueries;
-import com.amar.webcrawler.model.bo.MediaCssQueries;
-import com.amar.webcrawler.model.bo.PageCssQueries;
 import com.amar.webcrawler.model.bo.SiteMapUrlEntry;
+import com.amar.webcrawler.model.constants.UrlType;
+import com.amar.webcrawler.model.properties.AppProperties;
+import com.amar.webcrawler.model.properties.CssQueryProperties;
 import com.amar.webcrawler.service.CrawlService;
 import com.amar.webcrawler.service.CrawlTracker;
 import com.amar.webcrawler.service.impl.CrawlServiceImpl;
@@ -25,21 +23,15 @@ import java.util.Set;
 public class AppConfig {
 
     @Bean
-    @ConfigurationProperties(prefix = "app.cssquery.page")
-    public CssQueries pageCssQueries() {
-        return new PageCssQueries();
+    @ConfigurationProperties(prefix = "app.jsoup.cssquery")
+    public CssQueryProperties cssQueryProperties() {
+        return new CssQueryProperties();
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "app.cssquery.media")
-    public CssQueries mediaCssQueries() {
-        return new MediaCssQueries();
-    }
-
-    @Bean
-    @ConfigurationProperties(prefix = "app.cssquery.importlink")
-    public CssQueries importLinkCssQueries() {
-        return new ImportLinkCssQueries();
+    @ConfigurationProperties(prefix = "app.settings")
+    public AppProperties impo() {
+        return new AppProperties();
     }
 
     @Bean
@@ -56,19 +48,18 @@ public class AppConfig {
         crawledUrlEntriesSetLookup.put(UrlType.MEDIA, crawledMediaUrlEntries);
         crawledUrlEntriesSetLookup.put(UrlType.IMPORT_LINK, crawledImportLinkUrlEntries);
         crawledUrlEntriesSetLookup.put(UrlType.ALL, allCrawledUrlEntries);
-
         return new CrawlTrackerImpl(crawledUrlEntriesSetLookup);
     }
 
     @Bean
     @Autowired
-    public CrawlService<SiteMapUrlEntry> crawlService(CrawlTracker<SiteMapUrlEntry> crawlTracker) {
-        Map<UrlType, CssQueries> cssQueryPropertiesMap = new HashMap<>();
-        cssQueryPropertiesMap.put(UrlType.PAGE, pageCssQueries());
-        cssQueryPropertiesMap.put(UrlType.MEDIA, mediaCssQueries());
-        cssQueryPropertiesMap.put(UrlType.IMPORT_LINK, importLinkCssQueries());
-
-        return new CrawlServiceImpl(crawlTracker, cssQueryPropertiesMap);
+    public CrawlService<SiteMapUrlEntry> crawlService(CrawlTracker<SiteMapUrlEntry> crawlTracker,
+                    CssQueryProperties cssQueryProperties, AppProperties appProperties) {
+        Map<UrlType, Map<String, String>> cssQueryLookup = new HashMap<>();
+        cssQueryLookup.put(UrlType.PAGE, cssQueryProperties.getPageQueries());
+        cssQueryLookup.put(UrlType.MEDIA, cssQueryProperties.getMediaQueries());
+        cssQueryLookup.put(UrlType.IMPORT_LINK, cssQueryProperties.getImportLinkQueries());
+        return new CrawlServiceImpl(crawlTracker, cssQueryLookup, appProperties);
     }
 
 }
