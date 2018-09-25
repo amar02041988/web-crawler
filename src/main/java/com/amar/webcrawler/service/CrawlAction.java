@@ -1,10 +1,11 @@
 package com.amar.webcrawler.service;
 
-import com.amar.webcrawler.model.bo.SiteMapUrl;
-import com.amar.webcrawler.model.bo.impl.SiteMapUrlImpl;
+import com.amar.webcrawler.model.bo.SiteMapEntry;
+import com.amar.webcrawler.model.bo.impl.SiteMapEntryImpl;
 import com.amar.webcrawler.model.constants.AppConstants;
 import com.amar.webcrawler.model.constants.HtmlTagType;
 import com.amar.webcrawler.model.properties.AppProperties;
+import com.amar.webcrawler.service.impl.SiteMapTracker;
 import com.amar.webcrawler.util.UrlUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -20,85 +21,72 @@ import java.util.concurrent.RecursiveAction;
 
 public final class CrawlAction extends RecursiveAction {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = -2505903207646772261L;
     private static final Logger LOGGER = LoggerFactory.getLogger(CrawlAction.class);
 
-    private final CrawlTracker<SiteMapUrl> crawlTracker;
+    private final String url;
+    private final int depth;
+    private final CrawlTracker<String> crawlTracker;
+    private final SiteMapTracker<SiteMapEntry> siteMapTracker;
     private final Map<HtmlTagType, Map<String, String>> cssQueryLookup;
-    private final SiteMapUrl siteMapUrlEntry;
     private final AppProperties appProperties;
 
-    public CrawlAction(CrawlTracker<SiteMapUrl> crawlTracker,
+
+    public CrawlAction(String url, int depth, CrawlTracker<String> crawlTracker,
+                    SiteMapTracker<SiteMapEntry> siteMapTracker,
                     Map<HtmlTagType, Map<String, String>> cssQueryLookup,
-                    SiteMapUrl siteMapUrlEntry, AppProperties appProperties) {
+                    AppProperties appProperties) {
         super();
+        this.url = url;
+        this.depth = depth;
         this.crawlTracker = crawlTracker;
+        this.siteMapTracker = siteMapTracker;
         this.cssQueryLookup = cssQueryLookup;
-        this.siteMapUrlEntry = siteMapUrlEntry;
         this.appProperties = appProperties;
     }
 
+
     @Override
     protected void compute() {
+        if (!crawlTracker.isVisited(url)) {
+            crawlTracker.addVisited(url);
+            Document document = UrlUtils.getDocument(url, appProperties.getConnectAndReadTimeoutInMillis());
+            
+            if (document != null) {
+                cssQueryLookup.forEach((htmlTagType, cssQueries) -> {
+                    Elements elements = document.select(cssQueries.get(AppConstants.SELECT_URL_KEY));
 
-        if (!crawlTracker.add(siteMapUrlEntry)) {
-            return;
-        }
+                    List<CrawlAction> childCrawlActions = new ArrayList<>();
 
-        Document document = UrlUtils.getDocument(siteMapUrlEntry.getLocation(),
-                        appProperties.getConnectAndReadTimeoutInMillis());
+                    for (Element element : elements) {
+                        String childElement = element.attr(cssQueries.get(AppConstants.ABSOLUTE_URL_KEY));
+                        childElement = UrlUtils.removeFragmentIdentifierIfExist(childElement);
 
-        if (document != null) {
-            cssQueryLookup.forEach((htmlTagType, cssQueries) -> {
-                Elements urlElements = document.select(cssQueries.get(AppConstants.SELECT_URL_KEY));
+                        if (depth < appProperties.getMaxDepth()
+                                        && !StringUtils.isEmpty(childElement)
+                                        && !crawlTracker.isVisited(childElement)
+                                        && UrlUtils.isInternalDomain(childElement,
+                                                        appProperties.getDomain())) {
+                            int newDepth = depth + 1;
+                            SiteMapEntry siteMapEntry = new SiteMapEntryImpl(newDepth, htmlTagType, childElement);
 
-                List<CrawlAction> childCrawlActions = new ArrayList<>();
-                for (Element urlElement : urlElements) {
-                    String absUrlElement =
-                                    urlElement.attr(cssQueries.get(AppConstants.ABSOLUTE_URL_KEY));
-                    absUrlElement = UrlUtils.removeFragmentIdentifierIfExist(absUrlElement);
+                            if (!siteMapTracker.isAlreadyInSiteMap(siteMapEntry)) {
+                                LOGGER.info(((SiteMapEntryImpl)siteMapEntry).toStringMinimal());
+                                siteMapTracker.addToSiteMap(siteMapEntry);
 
-                    if (StringUtils.isEmpty(absUrlElement)) {
-                        continue;
+                                if (htmlTagType.equals(HtmlTagType.ANCHOR)) {
+                                    childCrawlActions.add(new CrawlAction(childElement, newDepth, crawlTracker, siteMapTracker, cssQueryLookup, appProperties));
+                                }
+                            }
+                        }
                     }
 
-                    SiteMapUrl childSiteMapUrl = new SiteMapUrlImpl(htmlTagType, absUrlElement);
-
-                    if (htmlTagType.equals(HtmlTagType.ANCHOR) && UrlUtils
-                                    .isInternalDomain(childSiteMapUrl, appProperties.getDomain())) {
-                        childCrawlActions.add(new CrawlAction(crawlTracker, cssQueryLookup,
-                                        childSiteMapUrl, appProperties));
-                    } else {
-                        crawlTracker.add(childSiteMapUrl);
+                    if (childCrawlActions.size() > 0) {
+                        invokeAll(childCrawlActions);
                     }
-
-                }
-
-                invokeAll(childCrawlActions);
-            });
+                });
+            }
         }
-    }
-
-    public CrawlTracker<SiteMapUrl> getCrawlTracker() {
-        return crawlTracker;
-    }
-
-
-    public Map<HtmlTagType, Map<String, String>> getCssQueryLookup() {
-        return cssQueryLookup;
-    }
-
-
-    public SiteMapUrl getSiteMapUrl() {
-        return siteMapUrlEntry;
-    }
-
-
-    public AppProperties getAppProperties() {
-        return appProperties;
     }
 
 }

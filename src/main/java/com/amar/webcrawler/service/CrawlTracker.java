@@ -5,5 +5,9 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CrawlTracker<T> {
 
-    public boolean add(T t);
+    public boolean isVisited(T url);
+
+    public boolean addVisited(T url);
+
+
 }

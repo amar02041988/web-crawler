@@ -4,8 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum ChangeFrequencyType {
-    ALWAYS("always"), HOURLY("hourly"), DAILY("daily"), WEEKLY("weekly"), MONTHLY(
-                    "monthly"), YEARLY("yearly"), NEVER("never");
+    /**
+     * Pre-defined values took it from site map specification. However these are not used currently
+     * as part of coding assignment. So for now enum type "NEVER" is used. These enum values can be further used
+     * when frequency field fetch functionality will be implemented as a feature addition.
+     */
+    ALWAYS("always"),
+    HOURLY("hourly"),
+    DAILY("daily"),
+    WEEKLY("weekly"),
+    MONTHLY("monthly"),
+    YEARLY("yearly"),
+    NEVER("never");
 
     private final String value;
 
@@ -19,6 +29,7 @@ public enum ChangeFrequencyType {
 
     // String value -> Enum element conversion using static reverse resolver
     static final Map<String, ChangeFrequencyType> resolver = new HashMap<>();
+    
     static {
         for (ChangeFrequencyType changeFrequencyType : values()) {
             resolver.put(changeFrequencyType.getValue(), changeFrequencyType);

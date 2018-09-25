@@ -1,9 +1,8 @@
 package com.amar.webcrawler.service;
 
-import org.springframework.stereotype.Service;
+import com.amar.webcrawler.model.bo.SiteMapResult;
 
-@Service
 public interface CrawlService<T> {
 
-    public void crawl(T t);
+    public SiteMapResult crawl(T t);
 }

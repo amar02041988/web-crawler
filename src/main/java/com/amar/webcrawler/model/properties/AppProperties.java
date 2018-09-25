@@ -3,21 +3,22 @@ package com.amar.webcrawler.model.properties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-
 public final class AppProperties {
 
     private int connectAndReadTimeoutInMillis;
     private String domain;
+    private int maxDepth;
 
     public AppProperties() {
         super();
     }
 
-    public AppProperties(int connectAndReadTimeoutInMillis) {
+    public AppProperties(int connectAndReadTimeoutInMillis, String domain, int maxDepth) {
         super();
         this.connectAndReadTimeoutInMillis = connectAndReadTimeoutInMillis;
+        this.domain = domain;
+        this.maxDepth = maxDepth;
     }
-
 
     public int getConnectAndReadTimeoutInMillis() {
         return connectAndReadTimeoutInMillis;
@@ -37,12 +38,19 @@ public final class AppProperties {
         this.domain = domain;
     }
 
+    public int getMaxDepth() {
+        return maxDepth;
+    }
+
+    public void setMaxDepth(int maxDepth) {
+        this.maxDepth = maxDepth;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                         .append("connectAndReadTimeoutInMillis", connectAndReadTimeoutInMillis)
-                        .append("domain", domain).toString();
+                        .append("domain", domain).append("maxDepth", maxDepth).toString();
     }
-
 
 }

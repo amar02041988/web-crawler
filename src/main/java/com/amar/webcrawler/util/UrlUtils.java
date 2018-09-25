@@ -1,25 +1,26 @@
 package com.amar.webcrawler.util;
 
-import com.amar.webcrawler.model.bo.SiteMapUrl;
+import com.amar.webcrawler.model.bo.SiteMapEntry;
+import com.amar.webcrawler.model.bo.impl.SiteMapEntryImpl;
 import com.amar.webcrawler.model.constants.AppConstants;
-import com.amar.webcrawler.model.constants.HtmlTagType;
-import com.google.common.net.InternetDomainName;
+import com.amar.webcrawler.model.properties.CssQueryProperties;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 public final class UrlUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UrlUtils.class);
 
-    public static String getDomain(String urlString) throws Exception {
-        return InternetDomainName.from(new URL(urlString).getHost()).topPrivateDomain().toString()
-                        .toLowerCase();
+    public static String getDomain(String url) throws Exception {
+        return new URL(url).getHost().toLowerCase();
     }
 
     public static String removeFragmentIdentifierIfExist(String url) {
@@ -30,25 +31,22 @@ public final class UrlUtils {
         return url;
     }
 
-    public static final boolean isInternalDomain(SiteMapUrl siteMapUrl, String expectedDomain) {
+    public static final boolean isInternalDomain(String url, String expectedDomain) {
         try {
-            if (siteMapUrl.getType().equals(HtmlTagType.ANCHOR)) {
-                String domainFound = UrlUtils.getDomain(siteMapUrl.getLocation());
-                if (!StringUtils.isEmpty(domainFound) && domainFound.equals(expectedDomain)) {
-                    return true;
-                }
+            String domainFound = UrlUtils.getDomain(url);
+            if (!StringUtils.isEmpty(domainFound) && domainFound.equals(expectedDomain)) {
+                return true;
             }
         } catch (Exception ex) {
-            LOGGER.error("Skipping URL: {} due to error while getting domain: {}: ",
-                            siteMapUrl.getLocation(), ex.getMessage());
+            LOGGER.error("Skipping URL: {} due to error while getting domain: {}: ", url,
+                            ex.getMessage());
         }
         return false;
     }
 
     public static final Document getDocument(String url, int timeoutInMillis) {
         try {
-            return Jsoup.connect(url).timeout(timeoutInMillis).ignoreHttpErrors(true)
-                            .ignoreContentType(true).get();
+            return Jsoup.connect(url).timeout(timeoutInMillis).ignoreHttpErrors(true).ignoreContentType(true).get();
         } catch (IOException e) {
             LOGGER.error("Error occured while getting document for url: {}, Error: {}", url,
                             e.getMessage());
@@ -56,8 +54,7 @@ public final class UrlUtils {
         return null;
     }
 
-    public static void printSiteMapUrl(SiteMapUrl siteMapUrl) {
-        LOGGER.info("Type: {}, URL: {}", siteMapUrl.getType(), siteMapUrl.getLocation());
+    public static void printSiteMapUrl(SiteMapEntry siteMapUrl) {
+        LOGGER.info(((SiteMapEntryImpl) siteMapUrl).toStringMinimal());
     }
-
 }

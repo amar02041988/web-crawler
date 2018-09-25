@@ -24,7 +24,6 @@ public final class CssQueryProperties {
         this.linkQueries = linkQueries;
     }
 
-
     public Map<String, String> getAnchorQueries() {
         return anchorQueries;
     }
