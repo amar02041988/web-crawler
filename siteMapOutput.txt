@@ -1,0 +1,216 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.0.3.RELEASE)
+
+[main] - Starting BootWebCrawlerApplication v0.0.1-SNAPSHOT on IN-MU-LT-J27194 with PID 7728 (C:\Amar\web-crawler\target\web-crawler-0.0.1-SNAPSHOT.jar started by PanigraA in C:\Amar\web-crawler)
+[main] - No active profile set, falling back to default profiles: default
+[main] - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@27abe2cd: startup date [Wed Sep 26 05:46:33 IST 2018]; root of context hierarchy
+[main] - Registering beans for JMX exposure on startup
+[main] - Started BootWebCrawlerApplication in 2.42 seconds (JVM running for 3.281)
+[main] - =============================================================================
+[main] - Crawl configuration - Starting URL: https://www.prudential.co.uk/, Max depth: 1
+[main] - =============================================================================
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"LINK","location":"https://www.prudential.co.uk/~/media/38E8B539CEF44B27859A1701A7822009.ico"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"LINK","location":"https://www.prudential.co.uk/stylesheets/ResourceHandlermergeall.css?css=1&0=%7BB54D7D76-8C2B-4C0E-86E6-05F042150F8E%7D&1=%7B21D58885-477A-432F-80D7-C72D9DE2298C%7D&2=%7B44C176E7-DDA7-4695-8F03-03E27871D06C%7D&3=%7B9F4C4819-B2FF-4F2C-BF90-1322BB5147A7%7D&4=%7B73711C24-78FF-4416-ABAE-C84A801EC3B4%7D&5=%7B1F01C7A4-856B-4D68-97A5-AC7D9120AEA9%7D&6=%7BB294FC89-D8D5-4292-A6F9-F22FE7DC2573%7D&7=%7BB291810E-0F3D-41CF-BC88-252332906DFE%7D&8=%7B8059D339-967A-4526-BDC3-24A035437071%7D&10=%7BE16A1C4C-8B73-4647-95D8-D524C4C182E7%7D&11=%7B209488FC-2389-4752-9AAE-B6A80BB2117A%7D&sc_lang=en&revision=0102de5b-0c18-4d0a-a68d-e27735d2513a"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"LINK","location":"https://www.prudential.co.uk/stylesheets/ResourceHandlermergeprint.css?css=1&9=%7B5AD97179-7F43-4894-85A9-4147C1447361%7D&sc_lang=en&revision=0102de5b-0c18-4d0a-a68d-e27735d2513a"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/~/media/Images/P/Prudential-V2/icons/search-btn.png"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/~/media/Images/P/Prudential-V2/logo/prudential-logo.png?h=68&la=en&w=160"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/~/media/Images/P/Prudential-V2/banners/home-banner2.jpg?h=752&la=en&w=1480"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/~/media/Images/P/Prudential-V2/icons/quote-start.png"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/~/media/Images/P/Prudential-V2/icons/quote-end.png"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/~/media/Images/P/Prudential-V2/banners/home-banner8a.jpg?h=1633&la=en&w=3212"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/~/media/Images/P/Prudential-V2/banners/home-banner4e.jpg?h=1770&la=en&w=3483"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/~/media/Images/P/Prudential-V2/content-images/home/home-content-image.jpg?h=635&la=en&w=445"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/~/media/Images/P/Prudential-V2/content-images/home/bmac-winner-2017.jpg?h=124&la=en&w=100"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/~/media/images/P/Prudential-V2/logo/footer-logo.png"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/javascripts/ResourceHandlermerge.js?0=%7B2A3933D1-AA8E-41F8-8B52-B4F56F94453E%7D&1=%7B0ED1FF3E-CB6D-4EA0-986F-217F90FB5150%7D&2=%7B4238B0CB-093E-4E36-B41D-642AE30D494E%7D&3=%7BBEF58A16-AE71-4B12-BEC5-1972F012BD14%7D&4=%7B69B6259E-A0C7-4C99-86C0-B95C8F771D2F%7D&5=%7B894A4D19-59D6-466B-91D6-210FB9B26697%7D&6=%7B3B6B33CE-74F6-4060-BB05-413ED8CED723%7D&7=%7BA7B08DA1-E5AB-40F1-A839-5485FC3DC184%7D&8=%7BAA83D10C-E6F2-4C12-BF36-71F06803AE6F%7D&9=%7B1A922ED8-3533-405B-8631-2EE6A303C978%7D&10=%7B0BCF510B-D0AC-4F41-97F7-9F57F0B32544%7D&11=%7B445D9362-5C4A-415E-A67F-6E72EF6AE771%7D&12=%7B0F48B465-48A6-408C-BB9B-1F449705D7C0%7D&14=%7B75142DE8-BDF7-4AF8-B43B-F78DB8B75818%7D&15=%7B3CAF4C4C-1156-4E33-AEFE-3A506BDE1AFA%7D&16=%7BDC844656-5258-4849-B9A0-08CAD849D328%7D&sc_lang=en&revision=a648764e-651f-4e62-bbd2-e3563f78706c"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"SRC","location":"https://www.prudential.co.uk/javascripts/frame-manager.js?revision=eb3b6672-2ea3-41da-a590-ed64ec9aaabe"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/businesses/africa"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/how-our-business-works"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-strategy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-customers"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-leadership/board-of-directors"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/businesses/asia"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/businesses/jackson"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/businesses/mandg-prudential"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/businesses/eastspring"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/americas-retirement-crisis"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/shifting-demographics-exposes-the-gap-for-income-products"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/the-language-of-retirement"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/mike-wells-finding-new-ways-to-invest-in-infrastructure"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/getting-to-know-china"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/finance-in-relationships"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/when-would-you-like-to-retire"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/mike-wells-investing-in-the-next-fifty-years"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/what-is-value-investing"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/the-role-of-positivity-in-investing"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/the-prudential-relationship-index"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/spending-habits-in-uk-retirement"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/the-science-of-saving"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/mike-wells-driving-an-emotional-connection-with-customers"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/stock-market-investing-for-the-long-term"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/attitudes-to-retirement-in-east-asia"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/the-role-of-insurance-in-asean-markets"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/insights/life-insurance-and-economic-development-in-africa"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/approach"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/standards"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/performance"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/environment"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/people"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/inclusion/prudential-ridelondon"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/review"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"http://www.prudential.co.uk/~/media/Files/P/Prudential-V2/reports/2017/gender-pay-gap-report-2017-prudential-plc.pdf"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/modern-slavery-statement"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"http://www.prudential.co.uk/~/media/Files/P/Prudential-V2/reports/2017/esg-report-2017.pdf"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/whistleblowing"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/site-services/fraud-misuse-of-prudential-name"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/contact"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/results-centre"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/financial-highlights"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/reports/reports"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/presentations/2018"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/regulatory-news/lse"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/calendar/2018"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/share-price-information/london-share-price"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/credit-investors"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/contacts/investor-relations"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/news-releases"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/news-releases/2018"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/mandgprudential-demerger"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/executive-interviews"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/investor-conference-highlights"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/contacts/media-enquiries"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/careers"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/contacts/general"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/contacts/responsibility"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudence-the-face-of-our-business"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/timeline-prudential-over-the-years"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/interactive-history"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/our-businesses-through-history"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-first-world-war/world-war-one"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-first-world-war/contribution-of-the-company"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-first-world-war/joining-up"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-first-world-war/prudential-staff-in-action"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-first-world-war/office-life"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-first-world-war/volunteers-on-the-home-front"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-first-world-war/prudential-women-in-the-war"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-first-world-war/armistice-day-11-november-1918"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-titanic/the-titanic-and-other-claims"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-titanic/community-investment"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/prudential-and-the-titanic/investment"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/pre-wwii-business"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/pre-wwii-business/przedwojenne-interesy-prudential-w-polsce"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/about-us/our-history/our-archives"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/performance/gender-diversity"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/performance/greenhouse-gas-emissions"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/performance/energy-consumption"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/performance/water-consumption"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/performance/waste-and-recycling"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/performance/community-investment"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/performance/external-assurance-of-responsibility-reporting"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/inclusion"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/inclusion/greenhouse-changing-life-through-sport"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/inclusion/remedial-intervention-for-children-with-learning-disabilities"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/inclusion/sportsaid-encouraging-emerging-talent"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/inclusion/corporate-responsibility-in-africa"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/education"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/education/cha-ching-instilling-financial-literacy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/education/prudential-apprenticeships-providing-a-great-start"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/education/first-read-developing-childrens-skills"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/education/prudential-africas-scholarship-programme"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/education/kenyan-scholarship-scheme-launched"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/education/the-bee-programme-teaching-inner-city-children-enterprise-skills"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/education/the-zone-preparing-young-people-for-their-careers"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/disaster-readiness"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/disaster-readiness/volunteering-to-build-disaster-resilient-homes"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/disaster-readiness/safe-steps-disaster-survival-education"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/disaster-readiness/india-building-new-homes-for-families"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/engagement"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/engagement/chairmans-challenge"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/engagement/call-in-time-befriending-lonely-older-people"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/engagement/united-states-inspiring-young-people-to-succeed"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/engagement/chairmans-challenge-in-ghana"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/engagement/thailand-supporting-financial-education-in-schools"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/responsibility/communities/engagement/uganda-volunteers-run-lessons-for-students"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/results-centre/results-archive/2018"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/financial-highlights/ifrs-operating-profit"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/financial-highlights/eev-operating-profit"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/reports/historical-reports/1986-1999"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/regulatory-news/hkex/2018"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/share-price-information/london-share-price/chart"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/share-price-information/hong-kong-share-price/chart"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/share-price-information/singapore-share-price/chart"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/share-price-information/new-york-share-price/chart"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/dividend/cash-dividend"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/dividend/dividend-re-investment-plan-drip"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/dividend/drip-share-purchase-price"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/dividend/historical-scrip-and-drip-dividend-information"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/agm/2018"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/faqs"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/forms"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/glossary"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/electronic-communications"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/buying-and-selling-prudential-shares"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/historical-information"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/historical-information/aia-transaction-archive/aia-transaction-archive"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/shareholder-information/contact-registrar"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/board-committees-terms-of-reference"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/code-of-business-conduct"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/group-environment-policy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/directors-remuneration-policy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/group-wide-internal-audit-charter"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/anti-bribery-and-corruption-policy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/community-investment-policy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/managing-corporate-responsibility-policy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/memorandum-and-articles-of-association"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/nyse-and-prudential-plcs-corporate-governance-rules-and-practice"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/prudential-group-health-and-safety-policy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/diversity-and-inclusion"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/gender-diversity-statement"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/employee-relations-policy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/group-remuneration-policy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/learning-and-performance-management-policy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/talent-policy"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/governance-and-policies/companies-names-and-registration"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/mandgprudential-demerger/video"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/mandgprudential-demerger/animation"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/executive-interviews/a-growing-asian-footprint"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/executive-interviews/archive"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/contacts/investor-relations/analysts-coverage"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/contacts/investor-relations/credit-company-contact"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/contacts/investor-relations/contact-registrar"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/news-releases/2017/18-12-2017"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/news-releases/2018/17-09-2018"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/news-releases/2018/07-09-2018"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/news/news-releases/2018/08-08-2018"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/reports/reports/2017"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/presentations/2017"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/investors/share-price-information"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/site-services/privacy-and-cookies"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/site-services/accessibility"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/site-services/disclaimer"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/site-services/site-map"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/site-services/rss"}
+[ForkJoinPool-1-worker-1] - {"depth":1,"type":"ANCHOR","location":"https://www.prudential.co.uk/site-services/alerts"}
+[main] - =============================================================================
+[main] - SiteMap Metrics for CRAWL DEPTH: 1
+[main] - =============================================================================
+[main] - Total URL entries in site map: 189
+[main] - Total anchor tag's href attribute URL entries in site map: 174
+[main] - Total src attribute URL entries in site map: 12
+[main] - Total link tag's href attribute URL entries in site map: 3
+[main] - =============================================================================
+[Thread-2] - Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@27abe2cd: startup date [Wed Sep 26 05:46:33 IST 2018]; root of context hierarchy
+[Thread-2] - Unregistering JMX-exposed beans on shutdown
