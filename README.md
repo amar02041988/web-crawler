@@ -2,9 +2,9 @@
 
 Spring Boot, Multi-threaded, Fork-Join based Web-crawler implementation.
 
-## Tested using:
+## Tested using
 * Wire Mock
-* Mockito
+* JMockit
 
 ## Feature highlights
 
