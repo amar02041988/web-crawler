@@ -2,11 +2,11 @@
 
 Spring Boot, Multi-threaded, Fork-Join based Web-crawler implementation.
 
-##Tested using:
+## Tested using
 * Wire Mock
-* Mockito
+* JMockit
 
-##Feature highlights
+## Feature highlights
 
 * Searches urls that are part of anchor tag, src attribute and link tag.
 * Depth can be specified in order to limit the search at an hierarchy level.
@@ -18,7 +18,7 @@ Spring Boot, Multi-threaded, Fork-Join based Web-crawler implementation.
 * SiteMapEntry business model is designed to hold every granular details that might be useful to create final SiteMap 
 * There are also 3 separate specific Sets that holds urls specific to the tag/attribute from which it is fetched i.e Sets for anchor urls, src urls and link urls. Maintaining these additional separate Set helps to get the metrics of the items searched.
 
-##To-be done(if more time provided)
+## To-be done(if more time provided)
 * Convert it into an API using Spring Rest
 * Adding different type of SiteMap format generation feature like XML, HTML..etc
 * Putting more URL based validations for security constraints
@@ -30,8 +30,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-####What things you need
-* Java v8(https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+#### What things you need
+* [Java v8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven v3.x.x](https://maven.apache.org/) - Dependency Management
 
 ### Running Build and test:
