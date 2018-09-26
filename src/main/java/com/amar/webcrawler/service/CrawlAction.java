@@ -80,10 +80,12 @@ public final class CrawlAction extends RecursiveAction {
                         String childElement = element.attr(cssQueries.get(AppConstants.ABSOLUTE_URL_KEY));
                         childElement = UrlUtils.removeFragmentIdentifierIfExist(childElement);
 
-                        if (depth < appProperties.getMaxDepth()
-                                        && !StringUtils.isEmpty(childElement)
-                                        && !crawlTracker.isVisited(childElement)
-                                        && UrlUtils.isInternalDomain(childElement,
+                        int maxDepth=appProperties.getMaxDepth();
+                        boolean depthCheck = (maxDepth == -1 || (maxDepth > -1 && depth < maxDepth));
+                                        
+                        if (depthCheck && !StringUtils.isEmpty(childElement)
+                                       && !crawlTracker.isVisited(childElement)
+                                       && UrlUtils.isInternalDomain(childElement,
                                                         appProperties.getDomain())) {
                             int newDepth = depth + 1;
                             SiteMapEntry siteMapEntry = new SiteMapEntryImpl(newDepth, htmlTagType, childElement);

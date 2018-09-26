@@ -15,7 +15,7 @@ public final class AppProperties {
 
     private int connectAndReadTimeoutInMillis;
     private String domain;
-    private int maxDepth;
+    private int maxDepth=-1;
 
     public AppProperties() {
         super();
