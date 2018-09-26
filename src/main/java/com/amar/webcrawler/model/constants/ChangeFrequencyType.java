@@ -3,12 +3,15 @@ package com.amar.webcrawler.model.constants;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Predefined values took it from site map specification. However these are not used currently
+ * as part of coding assignment. So for now enum type "NEVER" is used. These enum values can be further used
+ * when frequency field fetch functionality will be implemented as a feature addition.
+ *  
+ * @author  Amar Panigrahy
+ * @version 1.0
+ */
 public enum ChangeFrequencyType {
-    /**
-     * Pre-defined values took it from site map specification. However these are not used currently
-     * as part of coding assignment. So for now enum type "NEVER" is used. These enum values can be further used
-     * when frequency field fetch functionality will be implemented as a feature addition.
-     */
     ALWAYS("always"),
     HOURLY("hourly"),
     DAILY("daily"),

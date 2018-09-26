@@ -11,6 +11,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Main class to boot Web-Crawler application 
+ *  
+ * @author  Amar Panigrahy
+ * @version 1.0
+ */
 @SpringBootApplication
 public class BootWebCrawlerApplication implements CommandLineRunner {
 

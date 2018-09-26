@@ -1,11 +1,20 @@
 package com.amar.webcrawler.model.properties;
 
+import com.amar.webcrawler.config.AppConfig;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Used Spring map based binding to map the values from properties file to the maps in this bean automatically
+ * based on naming conventions defined in properties file.
+ * Spring configuration for this auto binding is maintained in {@link AppConfig} class.
+ *  
+ * @author  Amar Panigrahy
+ * @version 1.0
+ */
 public final class CssQueryProperties {
 
     private Map<String, String> anchorQueries = new HashMap<>();

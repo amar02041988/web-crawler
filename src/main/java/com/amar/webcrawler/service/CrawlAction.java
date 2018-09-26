@@ -5,7 +5,6 @@ import com.amar.webcrawler.model.bo.impl.SiteMapEntryImpl;
 import com.amar.webcrawler.model.constants.AppConstants;
 import com.amar.webcrawler.model.constants.HtmlTagType;
 import com.amar.webcrawler.model.properties.AppProperties;
-import com.amar.webcrawler.service.impl.SiteMapTracker;
 import com.amar.webcrawler.util.UrlUtils;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,8 +16,27 @@ import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
+/**
+ * Scans a url independently as sub task implemented as {@link RecursiveAction}.
+ * 
+ * It searches urls from below html items:
+ * 
+ * 1. anchor tag's href attribute
+ * 2. src attribute
+ * 3. link tag
+ *
+ *  If it finds url then a new RecursiveAction object is being created,forked and then joined
+ *  using {@link ForkJoinPool} framework
+ *  
+ *  External URL's are maintained in SiteMap but they are NOT crawled further
+ *  Internal URL's are maintained in SiteMap and further crawled based on max depth provided at the time of application boot. 
+ *  
+ * @author  Amar Panigrahy
+ * @version 1.0
+ */
 public final class CrawlAction extends RecursiveAction {
 
     private static final long serialVersionUID = -2505903207646772261L;
@@ -87,6 +105,30 @@ public final class CrawlAction extends RecursiveAction {
                 });
             }
         }
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public CrawlTracker<String> getCrawlTracker() {
+        return crawlTracker;
+    }
+
+    public SiteMapTracker<SiteMapEntry> getSiteMapTracker() {
+        return siteMapTracker;
+    }
+
+    public Map<HtmlTagType, Map<String, String>> getCssQueryLookup() {
+        return cssQueryLookup;
+    }
+
+    public AppProperties getAppProperties() {
+        return appProperties;
     }
 
 }

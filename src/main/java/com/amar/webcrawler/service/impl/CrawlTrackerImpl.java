@@ -4,6 +4,12 @@ import com.amar.webcrawler.service.CrawlTracker;
 
 import java.util.Set;
 
+/**
+ * Description provided in {@link CrawlTracker} interface.
+ *  
+ * @author  Amar Panigrahy
+ * @version 1.0
+ */
 public class CrawlTrackerImpl implements CrawlTracker<String> {
 
     private final Set<String> visitedUrlSet;

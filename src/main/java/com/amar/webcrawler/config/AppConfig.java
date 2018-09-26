@@ -6,9 +6,9 @@ import com.amar.webcrawler.model.properties.AppProperties;
 import com.amar.webcrawler.model.properties.CssQueryProperties;
 import com.amar.webcrawler.service.CrawlService;
 import com.amar.webcrawler.service.CrawlTracker;
+import com.amar.webcrawler.service.SiteMapTracker;
 import com.amar.webcrawler.service.impl.CrawlServiceImpl;
 import com.amar.webcrawler.service.impl.CrawlTrackerImpl;
-import com.amar.webcrawler.service.impl.SiteMapTracker;
 import com.amar.webcrawler.service.impl.SiteMapTrackerImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -23,19 +23,21 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Provides Spring Bean definitions for dependency injection.
+ * All wiring for object creation logic is maintained in this file explicitly to keep a track of object hierarchies.
+ * Providing wiring logic explicitly will help to debug cyclic dependency issues quickly as the application grows.
+ *  
+ * @author  Amar Panigrahy
+ * @version 1.0
+ */
 @Configuration
 public class AppConfig {
 
     @Bean
     public ForkJoinPool forkJoinPool() {
         return new ForkJoinPool();
-    }
-
-    @Bean
-    public ReentrantLock crawlTrackLock() {
-        return new ReentrantLock();
     }
 
     @Bean
@@ -52,20 +54,22 @@ public class AppConfig {
 
     @Bean
     public SiteMapTracker<SiteMapEntry> siteMapTracker() {
-        Set<SiteMapEntry> allSiteMapUrlSet = new LinkedHashSet<>();
+        Set<SiteMapEntry> allSiteMapEntrySet = new LinkedHashSet<>();
 
-        // Created separately for faster search and for reporting specific items search details like
-        // total count
-        Set<SiteMapEntry> anchorSiteMapUrlSet = new HashSet<>();
-        Set<SiteMapEntry> srcSiteMapUrlSet = new HashSet<>();
-        Set<SiteMapEntry> linkSiteMapUrlSet = new HashSet<>();
+        /**
+         * One Set per tag type is created for faster search operation and for providing metrics/reporting
+         * specific items search details like total count
+         */
+        Set<SiteMapEntry> anchorSiteMapEntrySet = new HashSet<>();
+        Set<SiteMapEntry> srcSiteMapEntrySet = new HashSet<>();
+        Set<SiteMapEntry> linkSiteMapEntrySet = new HashSet<>();
 
-        Map<HtmlTagType, Set<SiteMapEntry>> siteMapUrlSetLookup = new HashMap<>();
-        siteMapUrlSetLookup.put(HtmlTagType.ANCHOR, anchorSiteMapUrlSet);
-        siteMapUrlSetLookup.put(HtmlTagType.SRC, srcSiteMapUrlSet);
-        siteMapUrlSetLookup.put(HtmlTagType.LINK, linkSiteMapUrlSet);
-        siteMapUrlSetLookup.put(HtmlTagType.ALL, allSiteMapUrlSet);
-        return new SiteMapTrackerImpl(siteMapUrlSetLookup);
+        Map<HtmlTagType, Set<SiteMapEntry>> siteMapEntrySetLookup = new HashMap<>();
+        siteMapEntrySetLookup.put(HtmlTagType.ANCHOR, anchorSiteMapEntrySet);
+        siteMapEntrySetLookup.put(HtmlTagType.SRC, srcSiteMapEntrySet);
+        siteMapEntrySetLookup.put(HtmlTagType.LINK, linkSiteMapEntrySet);
+        siteMapEntrySetLookup.put(HtmlTagType.ALL, allSiteMapEntrySet);
+        return new SiteMapTrackerImpl(siteMapEntrySetLookup);
     }
 
     @Bean

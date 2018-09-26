@@ -9,6 +9,14 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Business object implementation of {@link SiteMapEntry}  for maintaining site map related details for every searched url.
+ * Every searched url will be recorded and maintained as {@link SiteMapEntryImpl}
+ *  
+ * @author  Amar Panigrahy
+ * @version 1.0
+ */
+
 public final class SiteMapEntryImpl implements SiteMapEntry {
 
     private static final long serialVersionUID = 2731124608425626360L;

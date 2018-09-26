@@ -1,6 +1,5 @@
 package com.amar.webcrawler.service.impl;
 
-import com.amar.webcrawler.BootWebCrawlerApplication;
 import com.amar.webcrawler.model.bo.SiteMapEntry;
 import com.amar.webcrawler.model.bo.SiteMapResult;
 import com.amar.webcrawler.model.bo.impl.SiteMapResultImpl;
@@ -9,16 +8,19 @@ import com.amar.webcrawler.model.properties.AppProperties;
 import com.amar.webcrawler.service.CrawlAction;
 import com.amar.webcrawler.service.CrawlService;
 import com.amar.webcrawler.service.CrawlTracker;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.amar.webcrawler.service.SiteMapTracker;
 
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ForkJoinPool;
 
+/**
+ * Description provided in {@link CrawlService} interface.
+ *  
+ * @author  Amar Panigrahy
+ * @version 1.0
+ */
 public class CrawlServiceImpl implements CrawlService<String> {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(BootWebCrawlerApplication.class);
 
     private final CrawlTracker<String> crawlTracker;
     private final SiteMapTracker<SiteMapEntry> siteMapTracker;
@@ -47,14 +49,10 @@ public class CrawlServiceImpl implements CrawlService<String> {
             pool.shutdown();
         }
 
-        Set<SiteMapEntry> allSiteMapEntries =
-                        siteMapTracker.getSiteMapUrlSetLookup().get(HtmlTagType.ALL);
-        Set<SiteMapEntry> anchorSiteMapEntries =
-                        siteMapTracker.getSiteMapUrlSetLookup().get(HtmlTagType.ANCHOR);
-        Set<SiteMapEntry> srcSiteMapEntries =
-                        siteMapTracker.getSiteMapUrlSetLookup().get(HtmlTagType.SRC);
-        Set<SiteMapEntry> linkSiteMapEntries =
-                        siteMapTracker.getSiteMapUrlSetLookup().get(HtmlTagType.LINK);
+        Set<SiteMapEntry> allSiteMapEntries = siteMapTracker.getSiteMapUrlSetLookup().get(HtmlTagType.ALL);
+        Set<SiteMapEntry> anchorSiteMapEntries = siteMapTracker.getSiteMapUrlSetLookup().get(HtmlTagType.ANCHOR);
+        Set<SiteMapEntry> srcSiteMapEntries = siteMapTracker.getSiteMapUrlSetLookup().get(HtmlTagType.SRC);
+        Set<SiteMapEntry> linkSiteMapEntries = siteMapTracker.getSiteMapUrlSetLookup().get(HtmlTagType.LINK);
 
         return new SiteMapResultImpl(allSiteMapEntries, anchorSiteMapEntries, srcSiteMapEntries,
                         linkSiteMapEntries);

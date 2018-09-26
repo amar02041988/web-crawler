@@ -13,9 +13,9 @@ import com.amar.webcrawler.model.properties.AppProperties;
 import com.amar.webcrawler.model.properties.CssQueryProperties;
 import com.amar.webcrawler.service.CrawlService;
 import com.amar.webcrawler.service.CrawlTracker;
+import com.amar.webcrawler.service.SiteMapTracker;
 import com.amar.webcrawler.service.impl.CrawlServiceImpl;
 import com.amar.webcrawler.service.impl.CrawlTrackerImpl;
-import com.amar.webcrawler.service.impl.SiteMapTracker;
 import com.amar.webcrawler.service.impl.SiteMapTrackerImpl;
 import com.amar.webcrawler.util.UrlUtils;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
@@ -43,8 +43,11 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Stream;
 
 /**
- * @author PanigraA
- *
+ * Test crawler upto depth 3 for the html files maintained in src/test/resources folder
+ * which are hosted using 'Wire Mock' mock-server
+ *  
+ * @author  Amar Panigrahy
+ * @version 1.0
  */
 @RunWith(JMockit.class)
 public final class CrawlServiceImplWireMockTest {

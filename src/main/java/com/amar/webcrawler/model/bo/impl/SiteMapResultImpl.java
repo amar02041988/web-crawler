@@ -5,6 +5,15 @@ import com.amar.webcrawler.model.bo.SiteMapResult;
 
 import java.util.Set;
 
+
+/**
+ * Business object implementation of {@link SiteMapResult} to provide consolidated details about all and specific site map entry.
+ * It provides separate {@link Set} that is used to fetch granular details like metrics for
+ * each Set of entry based on their types. 
+ *  
+ * @author  Amar Panigrahy
+ * @version 1.0
+ */
 public class SiteMapResultImpl implements SiteMapResult {
 
     private static final long serialVersionUID = -5322188592328716406L;
